@@ -1,6 +1,6 @@
 package number
 
-func MulC(m Matrix, b int) (mr Matrix) {
+func DotC(m Matrix, b int) (mr Matrix) {
 	x, y := m.Size()
 	for i := 0; i < x; i++ {
 		mr = append(mr, make([]int, y))
@@ -10,7 +10,7 @@ func MulC(m Matrix, b int) (mr Matrix) {
 	}
 	return
 }
-func MulfC(m Matrixf, b float64) (mr Matrixf) {
+func DotfC(m Matrixf, b float64) (mr Matrixf) {
 	x, y := m.Size()
 	for i := 0; i < x; i++ {
 		mr = append(mr, make([]float64, y))
@@ -20,12 +20,14 @@ func MulfC(m Matrixf, b float64) (mr Matrixf) {
 	}
 	return
 }
-func Mul(a, b Matrix) (mr Matrix) {
 
-	x, y1 := a.Size()
-	x1, y := b.Size()
+//Doc 当矩阵A的列数等于矩阵B的行数时，A与B可以相乘。
+func Dot(a, b Matrix) (mr Matrix) {
 
-	if y != x || x1 != y1 {
+	x, p1 := a.Size()
+	p2, y := b.Size()
+
+	if p2 != p1 {
 		panic("matrix size error")
 	}
 
@@ -33,8 +35,8 @@ func Mul(a, b Matrix) (mr Matrix) {
 		mr = append(mr, make([]int, y))
 		for j := 0; j < y; j++ {
 			mr[i][j] = 0
-			for k := 0; k < x1; k++ {
-				if k < x1 && k < y1 {
+			for k := 0; k < p2; k++ {
+				if k < p2 {
 					s := a[i][k] * b[k][j]
 					mr[i][j] += s
 				}
@@ -44,12 +46,12 @@ func Mul(a, b Matrix) (mr Matrix) {
 	}
 	return
 }
-func Mulf(a, b Matrixf) (mr Matrixf) {
+func Dotf(a, b Matrixf) (mr Matrixf) {
 
-	x, y1 := a.Size()
-	x1, y := b.Size()
+	x, p1 := a.Size()
+	p2, y := b.Size()
 
-	if y != x || x1 != y1 {
+	if p2 != p1 {
 		panic("matrix size error")
 	}
 
@@ -57,8 +59,8 @@ func Mulf(a, b Matrixf) (mr Matrixf) {
 		mr = append(mr, make([]float64, y))
 		for j := 0; j < y; j++ {
 			mr[i][j] = 0
-			for k := 0; k < x1; k++ {
-				if k < x1 && k < y1 {
+			for k := 0; k < p2; k++ {
+				if k < p2 {
 					s := a[i][k] * b[k][j]
 					mr[i][j] += s
 				}

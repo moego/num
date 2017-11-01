@@ -84,19 +84,33 @@ func NewMatrixf(datas ...[]float64) Matrixf {
 	return result
 }
 
+func Eye(n int) (m Matrix) {
+	for x := 0; x < n; x++ {
+		m = append(m, make([]int, n))
+		m[x][x] = 1
+	}
+	return
+}
+func Eyef(n int) (m Matrixf) {
+	for x := 0; x < n; x++ {
+		m = append(m, make([]float64, n))
+		m[x][x] = 1
+	}
+	return
+}
 func (a Matrix) Sum(b ...Matrix) Matrix {
 	c := append(b, a)
 	return Sum(c...)
 }
 
-func (a Matrix) Mul(b Matrix) Matrix {
-	return Mul(a, b)
+func (a Matrix) Dot(b Matrix) Matrix {
+	return Dot(a, b)
 }
 func (a Matrixf) Sumf(b ...Matrixf) Matrixf {
 	c := append(b, a)
 	return Sumf(c...)
 }
 
-func (a Matrixf) Mulf(b Matrixf) Matrixf {
-	return Mulf(a, b)
+func (a Matrixf) Dotf(b Matrixf) Matrixf {
+	return Dotf(a, b)
 }

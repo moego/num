@@ -18,19 +18,24 @@ func TestSumf(t *testing.T) {
 	fmt.Println(m1, m2, m3, Sumf(m1, m2, m3))
 	fmt.Println(m1.Sumf(m2, m3))
 }
-func TestMulC(t *testing.T) {
+func TestDotC(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
-	fmt.Println(m1, MulC(m1, 2))
+	fmt.Println(m1, DotC(m1, 2))
 }
-func TestMul(t *testing.T) {
-	m1 := RandMatrix(3, 1, 0, 10)
-	m2 := RandMatrix(1, 3, 0, 10)
-	fmt.Println(m1, m2, Mul(m1, m2))
+func TestDot(t *testing.T) {
+	m1 := RandMatrix(1, 3, 0, 10)
+	m2 := RandMatrix(3, 3, 0, 10)
+	fmt.Println(m1, m2, Dot(m1, m2))
 }
 
-func TestMul2(t *testing.T) {
+func TestDot2(t *testing.T) {
 	m1 := NewMatrix([]int{1, 2, 3}, []int{4, 5, 6})
 	m2 := NewMatrix([]int{1, 4}, []int{2, 5}, []int{3, 6})
 
-	fmt.Println(m1, m2, Mul(m1, m2))
+	fmt.Println(m1, m2, Dot(m1, m2))
+}
+
+func TestDotEys(t *testing.T) {
+	m1 := NewMatrix([]int{1, 2, 3}, []int{4, 5, 6})
+	fmt.Println(Eye(3).Dot(m1))
 }
