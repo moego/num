@@ -9,7 +9,7 @@ func TestSum(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
 	m2 := RandMatrix(5, 2, 0, 30)
 	m3 := RandMatrix(5, 2, 0, 30)
-	fmt.Println(m1, m2, m3, Sum(m1, m2, m3))
+	Println(m1, "+", m2, "+", m3, "=", Sum(m1, m2, m3))
 }
 func TestSumf(t *testing.T) {
 	m1 := RandMatrixf(5, 2, 10, 50)
@@ -20,12 +20,12 @@ func TestSumf(t *testing.T) {
 }
 func TestDotC(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
-	fmt.Println(m1, DotC(m1, 2))
+	Println(m1, "*", 2, "=", DotC(m1, 2))
 }
 func TestDot(t *testing.T) {
 	m1 := RandMatrix(1, 3, 0, 10)
 	m2 := RandMatrix(3, 3, 0, 10)
-	fmt.Println(m1, m2, Dot(m1, m2))
+	Println(m1, m2, Dot(m1, m2))
 }
 
 func TestDot2(t *testing.T) {
