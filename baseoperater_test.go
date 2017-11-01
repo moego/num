@@ -5,12 +5,15 @@ import (
 	"testing"
 )
 
+// 示例矩阵加法
 func TestSum(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
 	m2 := RandMatrix(5, 2, 0, 30)
 	m3 := RandMatrix(5, 2, 0, 30)
 	Println(m1, "+", m2, "+", m3, "=", Sum(m1, m2, m3))
 }
+
+// 示例浮点矩阵加法
 func TestSumf(t *testing.T) {
 	m1 := RandMatrixf(5, 2, 10, 50)
 	m2 := RandMatrixf(5, 2, 0, 30)
@@ -18,10 +21,14 @@ func TestSumf(t *testing.T) {
 	fmt.Println(m1, m2, m3, Sumf(m1, m2, m3))
 	fmt.Println(m1.Sumf(m2, m3))
 }
+
+// 示例矩阵乘常数
 func TestDotC(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
 	Println(m1, "*", 2, "=", DotC(m1, 2))
 }
+
+// 示例矩阵乘常数
 func TestDot(t *testing.T) {
 	m1 := RandMatrix(1, 3, 0, 10)
 	m2 := RandMatrix(3, 3, 0, 10)

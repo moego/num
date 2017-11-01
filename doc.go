@@ -1,4 +1,3 @@
+// Package num 提供了基本计算库，及辅助计算交互的工具
 //
-// num是golang数学计算基本库
-
 package number
