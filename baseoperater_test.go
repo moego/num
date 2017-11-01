@@ -1,12 +1,22 @@
 // This example
-package number
+package num
 
 import (
 	"fmt"
 	"testing"
 )
 
-// 示例矩阵加法
+func Example() {
+	A := NewMatrix([]int{1, 2}, []int{2, 3}, []int{3, 4})
+	B := Eye(2)
+	Println(A, ".", B, "=", Dot(A, B))
+	//Output:
+	//1	2	 	1	0	 	1	2
+	//2	3	.	0	1	=	2	3
+	//3	4	 	 	 	 	3	4
+	//
+}
+
 func TestSum(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
 	m2 := RandMatrix(5, 2, 0, 30)
@@ -14,7 +24,6 @@ func TestSum(t *testing.T) {
 	Println(m1, "+", m2, "+", m3, "=", Sum(m1, m2, m3))
 }
 
-// 示例浮点矩阵加法
 func TestSumf(t *testing.T) {
 	m1 := RandMatrixf(5, 2, 10, 50)
 	m2 := RandMatrixf(5, 2, 0, 30)
@@ -23,13 +32,11 @@ func TestSumf(t *testing.T) {
 	fmt.Println(m1.Sumf(m2, m3))
 }
 
-// 示例矩阵乘常数
 func TestDotC(t *testing.T) {
 	m1 := RandMatrix(5, 2, 10, 50)
 	Println(m1, "*", 2, "=", DotC(m1, 2))
 }
 
-// 示例矩阵乘常数
 func TestDot(t *testing.T) {
 	m1 := RandMatrix(1, 3, 0, 10)
 	m2 := RandMatrix(3, 3, 0, 10)

@@ -1,4 +1,4 @@
-package number
+package num
 
 //DotC 矩阵乘常数
 func DotC(m Matrix, b int) (mr Matrix) {

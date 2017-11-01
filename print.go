@@ -1,4 +1,4 @@
-package number
+package num
 
 import (
 	"fmt"
@@ -9,9 +9,12 @@ var DefaultPrinter = new(MatrixPrinter)
 
 //Println 格式化输出矩阵计算公式,并换行
 //
-//Println(m1,"*", m2,"=", Dot(m1, m2))
+// Println(m1,"*", m2,"=", Dot(m1, m2))
+//
 //7	5	2
+//
 //3	1	8	*	4	2	5	=	89	57	11
+//
 //8	5	0
 func Println(args ...interface{}) (result string) {
 	return DefaultPrinter.Println(args...)
