@@ -6,8 +6,8 @@ import (
 )
 
 func TestNewMatrix(t *testing.T) {
-	m,err:=NewMatrix([]int{1},[]int{2},[]int{3,23,4})
-	fmt.Println(m ,err)
+	m:=NewMatrix([]int{1},[]int{2},[]int{3,23,4})
+	fmt.Println(m )
 }
 func TestRandMatrix(t *testing.T) {
 	m:=RandMatrix(4,3,0,100)
@@ -22,8 +22,8 @@ func TestRandMatrixf(t *testing.T) {
 }
 
 func TestNewMatrixf(t *testing.T) {
-	m,err:=NewMatrixf([]float64{1.23},[]float64{2},[]float64{3,23,4})
-	fmt.Println(err,m)
+	m:=NewMatrixf([]float64{1.23},[]float64{2},[]float64{3,23,4})
+	fmt.Println(m)
 	fmt.Println(m.Size())
 
 }

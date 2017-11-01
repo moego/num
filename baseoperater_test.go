@@ -21,3 +21,10 @@ func TestMul(t *testing.T) {
 	m2:=RandMatrix(1,3,0,10)
 	fmt.Println(m1,m2,Mul(m1,m2))
 }
+
+func TestMul2(t *testing.T) {
+	m1:=NewMatrix([]int{1,2,3}, []int{4,5,6})
+	m2:=NewMatrix([]int{1,4}, []int{2,5},[]int{3,6})
+
+	fmt.Println(m1,m2,Mul(m1,m2))
+}

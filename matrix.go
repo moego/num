@@ -70,17 +70,17 @@ func (matrix Matrix)String()(string)  {
 
 }
 
-func NewMatrix(datas... []int)(*Matrix,error){
+func NewMatrix(datas... []int)(Matrix){
 	result:=make(Matrix,len(datas))
 	for index,data:=range datas{
 		result[index]= data
 	}
-	return &result,nil
+	return result
 }
-func NewMatrixf(datas... []float64)(*Matrixf,error){
+func NewMatrixf(datas... []float64)(Matrixf){
 	result:=make(Matrixf,len(datas))
 	for index,data:=range datas{
 		result[index]= data
 	}
-	return &result,nil
+	return result
 }

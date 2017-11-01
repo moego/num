@@ -23,7 +23,7 @@ func Mul(a,b Matrix)(mr Matrix){
 		mr=append(mr,make([]int,y))
 		for j:=0;j<y;j++ {
 			mr[i][j]=0
-			for k:=0; k<x; k++{
+			for k:=0; k<x1; k++{
 				if(k<x1&&k<y1){
 					s:=a[i][k]*b[k][j];
 					mr[i][j]+=s
