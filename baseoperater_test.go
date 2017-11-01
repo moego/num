@@ -25,7 +25,7 @@ func TestDotC(t *testing.T) {
 func TestDot(t *testing.T) {
 	m1 := RandMatrix(1, 3, 0, 10)
 	m2 := RandMatrix(3, 3, 0, 10)
-	Println(m1, m2, Dot(m1, m2))
+	Println(m1, "*", m2, "=", Dot(m1, m2))
 }
 
 func TestDot2(t *testing.T) {

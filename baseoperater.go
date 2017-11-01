@@ -1,5 +1,6 @@
 package number
 
+//DotC 矩阵乘常数
 func DotC(m Matrix, b int) (mr Matrix) {
 	x, y := m.Size()
 	for i := 0; i < x; i++ {
@@ -10,6 +11,8 @@ func DotC(m Matrix, b int) (mr Matrix) {
 	}
 	return
 }
+
+//DotfC 矩阵乘常数
 func DotfC(m Matrixf, b float64) (mr Matrixf) {
 	x, y := m.Size()
 	for i := 0; i < x; i++ {
@@ -21,7 +24,8 @@ func DotfC(m Matrixf, b float64) (mr Matrixf) {
 	return
 }
 
-//Doc 当矩阵A的列数等于矩阵B的行数时，A与B可以相乘。
+//Dot 矩阵乘矩阵
+//当矩阵A的列数等于矩阵B的行数时，A与B可以相乘
 func Dot(a, b Matrix) (mr Matrix) {
 
 	x, p1 := a.Size()
@@ -46,6 +50,9 @@ func Dot(a, b Matrix) (mr Matrix) {
 	}
 	return
 }
+
+//Dotf 浮点矩阵乘矩阵
+//当矩阵A的列数等于矩阵B的行数时，A与B可以相乘
 func Dotf(a, b Matrixf) (mr Matrixf) {
 
 	x, p1 := a.Size()
@@ -71,6 +78,7 @@ func Dotf(a, b Matrixf) (mr Matrixf) {
 	return
 }
 
+//Sum  矩阵乘加
 func Sum(ms ...Matrix) (m Matrix) {
 	if len(ms) == 0 {
 		return
@@ -99,6 +107,7 @@ func Sum(ms ...Matrix) (m Matrix) {
 	return
 }
 
+//Sumf  浮点矩阵乘加
 func Sumf(ms ...Matrixf) (m Matrixf) {
 	if len(ms) == 0 {
 		return

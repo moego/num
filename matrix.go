@@ -4,18 +4,56 @@ import (
 	"strconv"
 )
 
+//Matrix  矩阵
 type Matrix [][]int
+
+//Matrixf  浮点矩阵
 type Matrixf [][]float64
 
-func RandMatrix(lenx, leny int, duemin, duemax int) (m Matrix) {
-	for x := 0; x < lenx; x++ {
-		m = append(m, make([]int, leny))
-		for y := 0; y < leny; y++ {
+//autosize  对人工输入的矩阵初始数据，进行矩阵补齐
+func (matrix *Matrix) autosize() *Matrix {
+	height, length := matrix.Size()
+	for len((*matrix)) < height {
+		(*matrix) = append((*matrix), make([]int, length))
+	}
+	for i := 0; i < height; i++ {
+		if len((*matrix)[i]) < length {
+			(*matrix)[i] = append((*matrix)[i], make([]int, length-len((*matrix)[i]))...)
+		}
+	}
+	return matrix
+}
+
+//autosize  对人工输入的矩阵初始数据，进行矩阵补齐
+func (matrixf *Matrixf) autosize() *Matrixf {
+	height, length := matrixf.Size()
+	for len((*matrixf)) < height {
+		(*matrixf) = append((*matrixf), make([]float64, length))
+	}
+	for i := 0; i < height; i++ {
+		if len((*matrixf)[i]) < length {
+			(*matrixf)[i] = append((*matrixf)[i], make([]float64, length-len((*matrixf)[i]))...)
+		}
+	}
+	return matrixf
+}
+
+//RandMatrix  生成随机矩阵
+//矩阵高height,宽length
+//随机数范围,duemin< mynumber <duemax
+func RandMatrix(height, length int, duemin, duemax int) (m Matrix) {
+	for x := 0; x < height; x++ {
+		m = append(m, make([]int, length))
+		for y := 0; y < length; y++ {
 			m[x][y] = RandInt(duemin, duemax)
 		}
 	}
 	return
 }
+
+//RandMatrixf 生成随机矩阵
+//矩阵高height,宽length
+//随机数范围,duemin< mynumber <duemax
 func RandMatrixf(lenx, leny int, duemin, duemax float64) (m Matrixf) {
 	for x := 0; x < lenx; x++ {
 		m = append(m, make([]float64, leny))
@@ -23,26 +61,35 @@ func RandMatrixf(lenx, leny int, duemin, duemax float64) (m Matrixf) {
 			m[x][y] = RandFloat(duemin, duemax)
 		}
 	}
+
 	return
 }
-func (matrix Matrix) Size() (x, y int) {
-	x = len(matrix)
+
+//Size 矩阵高宽
+//矩阵高height,宽length
+func (matrix Matrix) Size() (height, length int) {
+	height = len(matrix)
 	for _, line := range matrix {
-		if len(line) > y {
-			y = len(line)
+		if len(line) > length {
+			length = len(line)
 		}
 	}
 	return
 }
-func (matrixf Matrixf) Size() (x, y int) {
-	x = len(matrixf)
+
+//Size 矩阵高宽
+//矩阵高height,宽length
+func (matrixf Matrixf) Size() (height, length int) {
+	height = len(matrixf)
 	for _, line := range matrixf {
-		if len(line) > y {
-			y = len(line)
+		if len(line) > length {
+			length = len(line)
 		}
 	}
 	return
 }
+
+//String 打印矩阵
 func (matrixf Matrixf) String() string {
 
 	s := "\n"
@@ -56,6 +103,7 @@ func (matrixf Matrixf) String() string {
 
 }
 
+//String 打印矩阵
 func (matrix Matrix) String() string {
 
 	s := "\n"
@@ -69,21 +117,27 @@ func (matrix Matrix) String() string {
 
 }
 
+//NewMatrix new矩阵
 func NewMatrix(datas ...[]int) Matrix {
 	result := make(Matrix, len(datas))
 	for index, data := range datas {
 		result[index] = data
 	}
+	result.autosize()
 	return result
 }
+
+//NewMatrixf new矩阵
 func NewMatrixf(datas ...[]float64) Matrixf {
 	result := make(Matrixf, len(datas))
 	for index, data := range datas {
 		result[index] = data
 	}
+	result.autosize()
 	return result
 }
 
+//Eye new单位矩阵
 func Eye(n int) (m Matrix) {
 	for x := 0; x < n; x++ {
 		m = append(m, make([]int, n))
@@ -91,6 +145,8 @@ func Eye(n int) (m Matrix) {
 	}
 	return
 }
+
+//Eyef new单位矩阵
 func Eyef(n int) (m Matrixf) {
 	for x := 0; x < n; x++ {
 		m = append(m, make([]float64, n))
@@ -98,19 +154,25 @@ func Eyef(n int) (m Matrixf) {
 	}
 	return
 }
-func (a Matrix) Sum(b ...Matrix) Matrix {
-	c := append(b, a)
+
+//Sum  矩阵加法
+func (matrix Matrix) Sum(b ...Matrix) Matrix {
+	c := append(b, matrix)
 	return Sum(c...)
 }
 
-func (a Matrix) Dot(b Matrix) Matrix {
-	return Dot(a, b)
-}
-func (a Matrixf) Sumf(b ...Matrixf) Matrixf {
-	c := append(b, a)
+//Sumf  矩阵加法
+func (matrixf Matrixf) Sumf(b ...Matrixf) Matrixf {
+	c := append(b, matrixf)
 	return Sumf(c...)
 }
 
-func (a Matrixf) Dotf(b Matrixf) Matrixf {
-	return Dotf(a, b)
+//Dot  矩阵乘法
+func (matrix Matrix) Dot(b Matrix) Matrix {
+	return Dot(matrix, b)
+}
+
+//Dotf  矩阵乘法
+func (matrixf Matrixf) Dotf(b Matrixf) Matrixf {
+	return Dotf(matrixf, b)
 }
