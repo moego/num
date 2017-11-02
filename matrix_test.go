@@ -21,7 +21,7 @@ func TestRandMatrixf(t *testing.T) {
 }
 
 func TestNewMatrixf(t *testing.T) {
-	m := NewMatrixf([]float64{1.2}, []float64{2.1}, []float64{3, 23.23, 4})
+	m := NewMatrixf([]float64{1.23, 2}, []float64{2.1}, []float64{3, 23.23, 4})
 	Println(m)
 	Println(m.Size())
 }

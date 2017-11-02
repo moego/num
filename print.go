@@ -2,6 +2,7 @@ package num
 
 import (
 	"fmt"
+	"strconv"
 )
 
 //DefaultPrinter 默认打印
@@ -31,6 +32,17 @@ type MatrixPrinter struct {
 	Inputs []interface{}
 }
 
+//MaxCharlen 某列最长字符串的行序号，及长度
+func (mp MatrixPrinter) MaxCharlen(length int) (max int) {
+	for i := 0; i < len(mp.Point); i++ {
+		str := []rune(fmt.Sprint(mp.Point[i][length]))
+		if len(str) > max {
+			max = len(str)
+
+		}
+	}
+	return
+}
 func (mp *MatrixPrinter) resize(height, length int) *MatrixPrinter {
 	for len(mp.Point) < height {
 		mp.Point = append(mp.Point, make([]interface{}, length))
@@ -112,10 +124,15 @@ func (mp *MatrixPrinter) draw() {
 
 //String 计算MatrixPrinter的字符串
 func (mp MatrixPrinter) String() (result string) {
+	maxlen := []int{}
+	for j := 0; j < len(mp.Point[0]); j++ {
+		maxlen = append(maxlen, mp.MaxCharlen(j))
+	}
+
 	for i := 0; i < len(mp.Point); i++ {
 		for j := 0; j < len(mp.Point[i]); j++ {
 			if mp.Point[i][j] != nil {
-				result += fmt.Sprint(mp.Point[i][j]) + "\t"
+				result += fmt.Sprintf("%-"+strconv.Itoa(maxlen[j])+"s", fmt.Sprint(mp.Point[i][j])) + "\t"
 			} else {
 				result += " \t"
 			}
