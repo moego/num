@@ -6,7 +6,7 @@ import (
 )
 
 //DefaultPrinter 默认打印
-var DefaultPrinter = new(MatrixPrinter)
+var DefaultPrinter = &MatrixPrinter{Tab: "\t"}
 
 //Println 格式化输出矩阵计算公式,并换行
 //
@@ -27,7 +27,9 @@ func Print(args ...interface{}) (result string) {
 }
 
 //MatrixPrinter 命令行打印工具
+//Tab 设置打印的制表符
 type MatrixPrinter struct {
+	Tab    string
 	Point  [][]interface{}
 	Inputs []interface{}
 }
@@ -132,7 +134,7 @@ func (mp MatrixPrinter) String() (result string) {
 	for i := 0; i < len(mp.Point); i++ {
 		for j := 0; j < len(mp.Point[i]); j++ {
 			if mp.Point[i][j] != nil {
-				result += fmt.Sprintf("%-"+strconv.Itoa(maxlen[j])+"s", fmt.Sprint(mp.Point[i][j])) + "\t"
+				result += fmt.Sprintf("%-"+strconv.Itoa(maxlen[j])+"s", fmt.Sprint(mp.Point[i][j])) + mp.Tab
 			} else {
 				result += " \t"
 			}
