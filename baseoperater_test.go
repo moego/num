@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func Example() {
+func ExampleMatrix() {
 	A := NewMatrix([]int{1, 2}, []int{2, 3}, []int{3, 4})
 	B := Eye(2)
 	Println(A, ".", B, "=", Dot(A, B))
